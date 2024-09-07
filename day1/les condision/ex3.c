@@ -2,16 +2,9 @@
 #include <stdlib.h>
 int main()
 {
-    int N;
-    printf("entrer un number : ");
-    scanf("%d",&N);
-    if(N < 0)
-        printf("le est negatffe");
-    else if (N >0)
-        printf("le namber est possitiffe");
-    else if (N == 0)
-        printf("neulle");
-
-
+    int a,b ;
+    printf("entrez a et b : ");
+    scanf("%d%d",&a,&b);
+    printf(" somme = %d",a+b);
     return 0;
 }

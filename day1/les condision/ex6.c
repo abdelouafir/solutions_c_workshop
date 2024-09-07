@@ -2,15 +2,15 @@
 #include <stdlib.h>
 int main()
 {
-    int a;
-    printf("entrez un nembeur : ");
-    scanf("%d",&a);
-    if(a < 0 )
-        printf("le nember %d et negatiffe : ",a);
-    else if(a >0)
-        printf("le nember %d et possitfe : ",a);
+    int N ;
+    printf("entrez N : ");
+    scanf("%d",&N);
+    if (N < 0)
+        printf("le nombere N est Négatif ");
+    else if (N > 0 )
+        printf("le nombere N est possitif ");
     else
-        printf("nulle");
+        printf("null");
 
     return 0;
 }
