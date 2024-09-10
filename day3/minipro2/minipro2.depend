@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1725921872 source:c:\users\hp\desktop\pro\minipro2\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"struct.h"
+	"function.h"
+
+1725921822 c:\users\hp\desktop\pro\minipro2\struct.h
+
+1725921948 c:\users\hp\desktop\pro\minipro2\function.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"struct.h"
+
