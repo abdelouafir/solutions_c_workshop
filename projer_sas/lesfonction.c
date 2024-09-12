@@ -139,7 +139,7 @@ void Modifier (){
                 printf("+++++ modffi effectue avec suces ++++++++++ \n");
             }
             else if (choix == 3){
-                printf("entrez nevel prenom : ");
+                printf("entrez nevel nom : ");
                 scanf("%s",echange);
                 strcpy(etudiant[i].prenom,echange);
                 printf("+++++ modffi effectue avec suces ++++++++++ \n");
@@ -153,9 +153,21 @@ void Modifier (){
                 printf("+++++ modffi effectue avec suces ++++++++++ \n");
             }
             else if(choix == 5){
-                printf("entrez nevel Departement  : ");
-                scanf("%s",echange);
-                strcpy(etudiant[i].Departement,echange);
+                int choix2;
+                printf("entrez nevel Departement : \n");
+                printf("1. informatique \n");
+                printf("2. english \n");
+                printf("3. froncese \n");
+                printf("4. ENCG \n");
+                scanf("%d",&choix2);
+                if(choix2 == 1 )
+                    strcpy( etudiant[i].Departement,"informatique");
+                else if(choix2 == 2)
+                    strcpy( etudiant[i].Departement,"english");
+                else if(choix2 == 3)
+                    strcpy( etudiant[i].Departement,"froncese");
+                else if(choix2 == 4)
+                    strcpy( etudiant[i].Departement,"ENCG");
                 printf("+++++ modffi effectue avec suces ++++++++++ \n");
             }
             else if(choix == 6){
@@ -280,33 +292,42 @@ void  Statistiques (){
         }
     }
     else if(choix == 4){
-         float notesTabel[50];
-         float tmp ;
-         float troixmruer [5];
-
-        for(int i = 0 ; i<nomber_des_etudiants ;i++){
-           notesTabel[i] = etudiant[i].Note;
-        }
-        for(int i = 0 ; i<nomber_des_etudiants ;i++){
-            for(int j = 0 ; j < nomber_des_etudiants ;j++){
-                if(notesTabel[j] < notesTabel [j+1]){
-                    tmp = notesTabel [j] ;
-                    notesTabel[j] = notesTabel [j+1];
-                    notesTabel[j+1] = tmp;
-                }
+       etudiants etudianttmp [20] ;
+       for(int i = 0 ; i< nomber_des_etudiants;i++){
+         for(int j = i+1 ; j<nomber_des_etudiants;j++){
+            if(etudiant[i].Note < etudiant[j].Note){
+                etudianttmp [i] = etudiant[i];
+                etudiant[i] = etudiant[j] ;
+                etudiant[j] = etudianttmp[i];
             }
         }
+     }
+     printf(" les 3 étudiants ayant les meilleures notes : \n");
+            for(int i = 0 ; i< 3 ; i++){
+            printf("*********************%s ******************* \n",etudiant[i].nom);
+            printf(" Numero_unique : %s \n le nom : %s \n la prenom : %s \n date ancince : %d/%d/%d \n Departement : %s \n la note giniral : %.2f \n",etudiant[i].Numero_unique,etudiant[i].nom,etudiant[i].prenom,etudiant[i].j,etudiant[i].m,etudiant[i].a,etudiant[i].Departement,etudiant[i].Note);
+            printf("\n");
+           }
 
-        for(int i = 0 ; i< 3 ; i++){
-            troixmruer[i] = notesTabel[i];
         }
-        for(int i = 0 ;i < 3 ;i++){
-            for(int j = 0 ; j < nomber_des_etudiants ;j++){
-                   printf("%s : la not : %.2f \n",etudiant[j].nom,etudiant[j].Note);
-            }
-
+    else if(choix == 5){
+          etudiants resusite [20];
+          etudiants echec [20];
+          int conteur1 = 0;
+          int conteur2 = 0;
+          for(int i = 0 ; i<nomber_des_etudiants;i++){
+             if(etudiant[i].Note >= 10){
+               resusite[conteur1] = etudiant[i];
+               conteur1++;
+             }
+          }
+        printf("les etudents resussite eux ayant une moyenne supérieure ou égale à 10/20  \n");
+        for(int i = 0 ; i < conteur1 ; i++){
+           printf("************ %s ******************* \n",etudiant[i].nom);
+           printf(" Numero_unique : %s \n le nom : %s \n la prenom : %s \n date ancince : %d/%d/%d \n Departement : %s \n la note giniral : %.2f \n",resusite[i].Numero_unique,resusite[i].nom,resusite[i].prenom,resusite[i].j,resusite[i].m,resusite[i].a,resusite[i].Departement,resusite[i].Note);
+           printf("\n");
         }
-    }
+   }
 }
 //fonction note supérieure a 10
 void superieur (){
@@ -441,7 +462,6 @@ void  tri_alphabitique2(){
 //o	Tri des étudiants par moyenne générale, du plus élevé au plus faible ou inversement.
 void triParMoyenne (){
     etudiants etudianttmp [20] ;
-    int conteur = 0;
     for(int i = 0 ; i<nomber_des_etudiants ;i++){
         for(int j = i+1 ; j< nomber_des_etudiants ;j++){
             if(etudiant[i].Note < etudiant[j].Note){
@@ -512,6 +532,7 @@ void TriAlphabitiqueGenral (){
     }
 
 }
+//fonction maine :
 int main()
 {
     int choix;
